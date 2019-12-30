@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>Globalno Zagrevanje</title>
+<style> 
+body {width:100%;
+	  height:100%;
+	  background-image:url('hgg-4.jpg');
+	  background-size: cover;
+	  background-position: center; /* Center the image */
+	  background-repeat: no-repeat; /* Do not repeat the image */
+		}
+table {empty-cells:show;
+	   width:100%;
+	   height:100%;
+	   b
+		
+	   }
+tr {width:100%;
+	height:20%;
+}
+td {
+	width:31%;}
+img {max-width:100%;
+	 height:auto;
+	 display:block;
+	}
+.puff-in-center {
+	animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+@keyframes puff-in-center {
+  0% {
+    transform: scale(2);
+    filter: blur(4px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+.heartbeat {
+	animation: heartbeat 1.5s ease-in-out 7s 10 both;
+}
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    transform: scale(0.91);
+    animation-timing-function: ease-in;
+  }
+  17% {
+    transform: scale(0.98);
+    animation-timing-function: ease-out;
+  }
+  33% {
+    transform: scale(0.87);
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}
+.slide-in-blurred-top {
+	animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+}
+.slide-in-blurred-top2 {
+	animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) 1s both;
+}
+.slide-in-blurred-top3 {
+	animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) 4s both;
+}
+@keyframes slide-in-blurred-top {
+  0% {
+    transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+    transform-origin: 50% 0%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+</style>
+</head>
+<body>
+<table border='0' style="padding-left:7%;">
+<tr><td></td> <td></td> <td> </td></tr>
+<tr>
+<td rowspan='2' style="margin:auto;vertical-align: bottom;">
+<img class="slide-in-blurred-top" src="ledledeni.png"/>
+<img class="slide-in-blurred-top2" src="ProbaVol3.png" style="margin:auto;"/></td> <td></td> <td> </td>
+</tr>
+<tr>  <td></td> <td> </td></tr>
+<tr><td class="slide-in-blurred-top3" style="vertical-align: top;"><img class="heartbeat" src="InformiSE.png" style="margin:auto;width:60%;height:35%;"/></td> <td></td> <td> </td></tr>
+<tr><td></td> <td></td> <td> </td></tr>
+</table>
+
+</body>
+
+</html>
