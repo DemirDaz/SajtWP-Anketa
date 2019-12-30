@@ -1,0 +1,86 @@
+function Slika() 
+{
+var naziv;
+var s=Slika.arguments;
+var src;
+var autor;
+var opis;
+var datum;
+var brl;
+ 
+var roditelj;
+ 
+this.Render = function(id)
+{
+this.roditelj = id;
+ 
+var glavni = document.createElement("div");
+glavni.style.width="100%";
+glavni.style.heigth="30%";
+ 
+var levo = document.createElement("div");
+levo.style.width="50%";
+levo.style.heigth="66%";
+ 
+ 
+var naz = document.createElement("span");
+naz.style.width="100%";
+naz.style.heigth="25%";
+naz.innerHTML = "Naziv:" + this.naziv;
+levo.appendChild(naz);
+ 
+var aut = document.createElement("span");
+aut.style.width="100%";
+aut.style.heigth="25%";
+aut.innerHTML = "Naziv:" + this.autor;
+levo.appendChild(aut);
+ 
+var lajk = document.createElement("input");
+lajk.style.width="100%";
+lajk.style.heigth="25%";
+lajk.setAttribute("type","button");
+lajk.setAttribute("value","<LIKE " + this.brl + ">");
+lajk.onclick=this.povecajLajk;
+levo.appendChild(lajk);
+ 
+var dat = document.createElement("span");
+dat.style.width="100%";
+dat.style.heigth="25%";
+dat.innerHTML ="Datum:" + this.datum;
+levo.appendChild(dat);
+ 
+var mestoSlika = document.createElement("div");
+mestoSlika.style.width="50%";
+mestoSlika.style.heigth="66%";
+    var slika = document.createElement("img");
+    slika.style.src=this.src;
+    slika.style.width="90%";
+    slika.style.height="85%";
+mestoSlika.appendChild(slika);  
+ 
+var ops = document.createElement("span");
+ops.style.width="100%";
+ops.style.heigth="34%";
+ops.innerHTML ="Opis:" + this.opis;
+glavni.appendChild(levi);
+glavni.appendChild(mestoSlika);
+glavni.appendChild(ops);
+ 
+this.roditelj.appendChild(glavni);
+}
+ 
+this.Konstruktor = function()
+{
+this.naziv=s[0];
+this.src= s[1];
+this.autor=s[2];
+this.opis=s[3];
+this.datum=s[4];
+}
+ 
+this.povecajLajk = function(event) 
+{
+brl=brl+1;
+}
+this.Konstruktor();
+}

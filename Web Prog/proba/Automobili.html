@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Auto Oglasi</title>
+	<link rel="stylesheet" href="glavna.css">
+	<script type="text/javascript" src="kola.js"></script>
+
+</head>
+<body>
+	<div id="naslov">Auto Oglasi</div>
+	<div id="navigacija">
+		<a class="one" href="Automobili.html">Automobil</a><br>
+		<a class="one" href= "Biblioteka.html">Biblioteka</a><br>
+		<a class="one" href="RentACar.html">Rent a car</a><br>
+	</div>
+	<div id="sadrzaj"></div>
+	<div id="footer">Demir D - Vezbanje</div>
+	<script type="text/javascript">
+		var auto1 = new Automobil("991","Porsche S4","78 500e","43 600km","294 kW","Crven",
+			"sukro/a11.jpg","sukro/a12.jpg","sukro/a13.jpg");
+		auto1.Prikazi("sadrzaj");
+		var auto = new Automobil("111","BMW","14000","9999","50kw","siva","sliks/bmw1.jpg","sliks/bmw2.jpg","sliks/bmw3.jpg","sliks/bmw4.jpg");
+			auto.Prikazi("sadrzaj");
+	</script>	
+</body>
+
+</html>

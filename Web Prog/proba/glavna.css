@@ -1,0 +1,53 @@
+#naslov {
+	height:  10%;
+	width: 100%;
+	background-color: orange;
+	font-family: tahoma;
+	font-size: 20;
+	text-align: center;
+	}
+
+#navigacija {
+	height: 80%;
+	width: 30%;
+	background-color: rgb(112,146,190);
+    float: left;
+    line-height: 200%;  /*visina linije, tjst koliki je razmak izmedju*/
+
+}
+#sadrzaj{height:85%;
+		 width:70%;
+		 background-color:white;
+		 font-size:10;
+		 text-align:justify;
+		 line-height:100%;
+		 text-indent:2mm;
+		 font-family:arial;
+		 font-style:italic;
+		 float:left;
+		 overflow-y: scroll;
+		 overflow-x: hidden;
+		 }
+/*#sadrzaj {
+	height: 80%;
+	background-color: white;
+	font-size: 10;
+	text-align: justify;
+	line-height: 100%;
+	font-family: arial;
+	font-style: italic;
+	float:left;
+	overflow-y: scroll; 
+	overflow-x: hidden;
+} */
+#footer{
+	height:10%;
+	width: 100%;
+	background-color: orange;
+	float:left;
+	text-align: center;
+}
+
+a.one:link{color: black;font-size: 20;text-decoration: none;}
+a.one:visited{color: black;font-size: 20;text-decoration: none;}
+a.one:hover{color: white;font-size: 28;}

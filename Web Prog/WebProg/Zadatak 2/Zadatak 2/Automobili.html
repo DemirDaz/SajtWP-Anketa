@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Auto oglasi </title>
+		<link rel="stylesheet" href="glavna_1.css">
+		<script type="text/javascript" src="auto.js"> </script>
+	</head>
+	<body>
+		<div id="naslov">Auto oglasi</div>
+		<div id="navigacija">
+			<a class="one" href="Biblioteka.html">Biblioteka<br /></a>
+			<a class="one" href="Automobili.html">Automobili<br /></a>
+			<a class="one" href="RentACar.html">Rent a car<br /></a>
+			<a class="one" href="registracija.html">Registracija korisnika<br /></a>
+		</div>
+		<div id="sadrzaj">
+		</div>
+		<div id="footer">Stefan Tosic 12415 - POCETNA </div>
+		<script type="text/javascript">
+		<!--
+		/*lista.Dodaj("111","BMW","slike/bmw.jpg","nerezevisan","34000","50000","2006","150kw","siva");
+			lista.Dodaj("222","Audi","slike/audi.jpg","nerezervisan","25000","90000","2006","180kw","siva");
+			lista.Dodaj("333","Renault","slike/clio1.jpg","nerezervisan","7000","100000","2002","60kw","siva");*/
+			
+			var auto1 = new Automobil("222","Audi","25000","90000","180kw","siva","slike/audi1.jpg","slike/audi2.jpg","slike/audi3.jpg");
+			auto1.Prikazi("sadrzaj");
+			var auto = new Automobil("111","BMW","14000","9999","50kw","siva","slike/bmw1.jpg","slike/bmw2.jpg","slike/bmw3.jpg","slike/bmw4.jpg");
+			auto.Prikazi("sadrzaj");
+			var auto2 = new Automobil("333","Renault","7000","100000","60kw","siva","slike/clio1.jpg","slike/clio2.jpg","slike/clio3.jpg");
+			auto2.Prikazi("sadrzaj");
+		</script>
+	</body>
+</html>
