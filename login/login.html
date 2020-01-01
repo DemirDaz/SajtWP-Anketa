@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <title>Login</title>
@@ -30,7 +31,7 @@ img {max-width:100%;
   background-color:rgb(254, 253, 251);
 	border-radius: 20px;
 }
-input[type=text], input[type=password] {
+input[type=text], input[type=email] {
   width: 100%;
   padding: 3%;
   margin: 5px 0 22px 0;
@@ -38,7 +39,7 @@ input[type=text], input[type=password] {
   border: none;
   background: #eaeaea;
 }
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=email]:focus {
   background-color: #d8d8d8;
   outline: none;
 }
@@ -71,20 +72,20 @@ a {
 <table border='0'>
 <tr><td></td>      <td></td>        <td> </td></tr>
 <tr><td></td> <td rowspan='3'>
-	<form action="action_page.php">
+	<form action="" method="POST">
 	 <div class="container">
     <h1>Registracija</h1>
     <p>Molimo vas registrujte se, da bi nastavili dalje.</p>
     <hr>
 
-    <label for="username"><b>Korisničko ime</b></label>
-    <input type="text" placeholder="Unesi željeno ime" name="username" required>
+    <label for="usrname"><b>Korisničko ime</b></label>
+    <input type="text" placeholder="Unesi željeno ime" name="usrname" required>
 
-    <label for="psw"><b>Šifra</b></label>
-    <input type="password" placeholder="Unesi šifru" name="psw" required>
+    <label for="psw"><b>Email</b></label>
+    <input type="email" placeholder="Unesi šifru" name="psw" required>
 
-    <label for="psw-repeat"><b>Ponovi šifru</b></label>
-    <input type="password" placeholder="Ponovi šifru" name="psw-repeat" required>
+    <label for="psw-repeat"><b>Ponovi email</b></label>
+    <input type="email" placeholder="Ponovi email" name="psw-repeat" required>
     <hr>
 
     <p>Registrujući se, prihvatate naše <a href="#">Uslove & Pravila</a>.</p>
@@ -97,6 +98,56 @@ a {
 <tr><td></td>      <td></td>        <td> </td></tr>
 </table>
 
+<?php
+include("dbconfig.php"); //konfig sa bazom
+session_start();
+function proveri() 
+{
+$myuser = $_POST('usrname');
+$mymail = $_POST('psw');
+$mymailrepeat = $_POST('psw-repeat');
+$sql = "SELECT * from registrovani WHERE username = '$myuser' ";
+$result = $db->query($sql); // rezultat je baza odradjena querijem $sql
+$count = mysqli_num_rows($result); //racuna broj redova u rezultatu
+if($count == 1 )  //naso je iskoriscen
+{	echo '<script language="javascript">';
+	echo 'alert("Korisničko ime je zauzeto, probajte neko drugo")';
+	echo '</script>';
+}
+else 
+{
+$sql2 = "SELECT * from registrovani WHERE email = '$mymail' ";
+$result = $db->query($sql); // rezultat je baza odradjena querijem $sql
+$count = mysqli_num_rows($result); //racuna broj redova u rezultatu
+if($count == 1 )  //naso je iskoriscen
+{echo '<script language="javascript">'; 
+echo 'alert("Email je već korišćen, probajte sa nekim drugim.")';
+echo '</script>'; }
+else 
+{
+$sql3 = "INSERT into registrovani (username,email) VALUES ('".$myuser."','".$mymail."')";
+if($db->query($sql3) === TRUE) { echo "alert("Uspešno ste se registrovali.");"
+header("Location: anketa.html");}
+else
+ {echo '<script language="javascript">';
+ echo 'alert("Greška pri registraciji, pokušajte ponovo.")';
+ echo '</script>'; }
+}
+}
+}
+
+if($_SERVER["REQUEST_METHOD"] == "POST") 
+{
+$myuser = $_POST('usrname');
+$mymail = $_POST('psw');
+$mymailrepeat = $_POST('psw-repeat');
+if($mymail =! $mymailrepeat)
+{echo '<script language="javascript">';
+echo 'alert("Mejlovi se ne poklapaju")';
+echo '</script>';}
+else proveri();
+}
+?>
 </body>
 
 </html>
