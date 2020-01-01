@@ -1,11 +1,102 @@
-<?php 
-
-
-?>
 <html>
 <head>
 <title>Login</title>
+<style> 
+body {width:100%;
+	  height:100%;
+	  background-image:url('896996.jpg');
+	  background-size: cover;
+	  background-position: center; /* Center the image */
+	  background-repeat: no-repeat; /* Do not repeat the image */
+		font-family: 'Helvetica', 'Arial', sans-serif;	}
+table {empty-cells:show;
+	   width:100%;
+	   height:100%;
+	   b
+		
+	   }
+tr {width:100%;
+	height:20%;
+}
+td {
+	width:31%;}
+img {max-width:100%;
+	 height:auto;
+	 display:block;
+	}
+* {box-sizing: border-box}
+.container {
+  padding: 2%;
+  background-color:rgb(254, 253, 251);
+	border-radius: 20px;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 3%;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #eaeaea;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #d8d8d8;
+  outline: none;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 1.5em;
+}
+.registerbtn {
+  background-color: #2597d8;
+  color: white;
+  padding: 1em 0.8em;
+  margin: 0.5em 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  border-radius: 20px;
+}
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+	</style>
 </head>
 <body>
+<table border='0'>
+<tr><td></td>      <td></td>        <td> </td></tr>
+<tr><td></td> <td rowspan='3'>
+	<form action="action_page.php">
+	 <div class="container">
+    <h1>Registracija</h1>
+    <p>Molimo vas, registrujte se da bi nastavili dalje.</p>
+    <hr>
+
+    <label for="username"><b>Korisničko ime</b></label>
+    <input type="text" placeholder="Unesi željeno ime" name="username" required>
+
+    <label for="psw"><b>Šifra</b></label>
+    <input type="password" placeholder="Unesi šifru" name="psw" required>
+
+    <label for="psw-repeat"><b>Ponovi šifru</b></label>
+    <input type="password" placeholder="Ponovi šifru" name="psw-repeat" required>
+    <hr>
+
+    <p>Registrujući se, prihvatate naše <a href="#">Uslove & Pravila</a>.</p>
+    <button type="submit" class="registerbtn">Registruj se</button>
+  </div>
+  </form>
+</td> <td> </td></tr>
+<tr><td></td>                       <td> </td></tr>
+<tr><td></td>                       <td> </td></tr>
+<tr><td></td>      <td></td>        <td> </td></tr>
+</table>
+
 </body>
+
 </html>
