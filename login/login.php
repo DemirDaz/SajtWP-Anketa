@@ -1,6 +1,54 @@
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST") 
+{
+$myuser = $_POST['usrname'];
+$mymail = $_POST['psw'];
+$mymailrepeat = $_POST['psw-repeat'];
+if($mymail != $mymailrepeat)
+{echo '<script type="text/javascript"> alert("Mejlovi se ne poklapaju"); </script>';}
+else proveri();
+}
 
+function proveri() 
+{
+   $servername = "localhost";
+   $username = "root";
+   $password = "";
+   $dbname = "gz_database";
+   $db = new mysqli($servername,$username,$password,$dbname);
+$myuser = $_POST['usrname'];
+$mymail = $_POST['psw'];
+$mydate = date("y/m/d");
+$sql = "SELECT * from registrovani WHERE username = '$myuser' ";
+$result = $db->query($sql); 
+$count = mysqli_num_rows($result); 
+if($count == 1 ) 
+{	echo '<script type="text/javascript"> alert("Korisničko ime je zauzeto, probajte neko drugo"); </script>';
+}
+else 
+{
+$sql2 = "SELECT * from registrovani WHERE email = '$mymail' ";
+$result = $db->query($sql); 
+$count = mysqli_num_rows($result); 
+if($count == 1 )  
+{echo '<script type="text/javascript"> alert("Email je već korišćen, probajte sa nekim drugim."); </script>'; }
+else 
+{
+$sql3 = "INSERT into registrovani (username,email,datum) VALUES ('".$myuser."','".$mymail."','".$mydate."')";
+if($db->query($sql3) === TRUE) { echo '<script type="text/javascript"> alert("Uspešno ste se registrovali."); </script>';
+header("Location: anketa.html");}
+else
+ {echo '<script type="text/javascript"> alert("Greška pri registraciji, pokušajte ponovo."); </script>';
+ }
+}
+}
+}
+
+
+?>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Login</title>
 <style> 
 body {width:100%;
@@ -72,19 +120,19 @@ a {
 <table border='0'>
 <tr><td></td>      <td></td>        <td> </td></tr>
 <tr><td></td> <td rowspan='3'>
-	<form action="" method="POST">
+	<form action="login.php" method="POST">
 	 <div class="container">
     <h1>Registracija</h1>
     <p>Molimo vas registrujte se, da bi nastavili dalje.</p>
     <hr>
 
-    <label for="usrname"><b>Korisničko ime</b></label>
+    <label ><b>Korisničko ime</b></label>
     <input type="text" placeholder="Unesi željeno ime" name="usrname" required>
 
-    <label for="psw"><b>Email</b></label>
+    <label><b>Email</b></label>
     <input type="email" placeholder="Unesi šifru" name="psw" required>
 
-    <label for="psw-repeat"><b>Ponovi email</b></label>
+    <label ><b>Ponovi email</b></label>
     <input type="email" placeholder="Ponovi email" name="psw-repeat" required>
     <hr>
 
@@ -98,56 +146,7 @@ a {
 <tr><td></td>      <td></td>        <td> </td></tr>
 </table>
 
-<?php
-include("dbconfig.php"); //konfig sa bazom
-session_start();
-function proveri() 
-{
-$myuser = $_POST('usrname');
-$mymail = $_POST('psw');
-$mymailrepeat = $_POST('psw-repeat');
-$sql = "SELECT * from registrovani WHERE username = '$myuser' ";
-$result = $db->query($sql); // rezultat je baza odradjena querijem $sql
-$count = mysqli_num_rows($result); //racuna broj redova u rezultatu
-if($count == 1 )  //naso je iskoriscen
-{	echo '<script language="javascript">';
-	echo 'alert("Korisničko ime je zauzeto, probajte neko drugo")';
-	echo '</script>';
-}
-else 
-{
-$sql2 = "SELECT * from registrovani WHERE email = '$mymail' ";
-$result = $db->query($sql); // rezultat je baza odradjena querijem $sql
-$count = mysqli_num_rows($result); //racuna broj redova u rezultatu
-if($count == 1 )  //naso je iskoriscen
-{echo '<script language="javascript">'; 
-echo 'alert("Email je već korišćen, probajte sa nekim drugim.")';
-echo '</script>'; }
-else 
-{
-$sql3 = "INSERT into registrovani (username,email) VALUES ('".$myuser."','".$mymail."')";
-if($db->query($sql3) === TRUE) { echo "alert("Uspešno ste se registrovali.");"
-header("Location: anketa.html");}
-else
- {echo '<script language="javascript">';
- echo 'alert("Greška pri registraciji, pokušajte ponovo.")';
- echo '</script>'; }
-}
-}
-}
 
-if($_SERVER["REQUEST_METHOD"] == "POST") 
-{
-$myuser = $_POST('usrname');
-$mymail = $_POST('psw');
-$mymailrepeat = $_POST('psw-repeat');
-if($mymail =! $mymailrepeat)
-{echo '<script language="javascript">';
-echo 'alert("Mejlovi se ne poklapaju")';
-echo '</script>';}
-else proveri();
-}
-?>
 </body>
 
 </html>
