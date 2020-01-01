@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<script src="../jquery.js"></script>
+
+
+<script>
+$(function(){
+$('.fadein img:gt(0)').hide();
+
+some = setInterval(function() {
+    $('.fadein :first-child').fadeOut()
+                             .next('img')
+                             .fadeIn()
+                             .end()
+                             .appendTo('.fadein');
+}, 15000);
+function stopSome() {
+clearInterval(some);}
+setTimeout(stopSome,30001); //30k bi poceo iz pocetka
+
+setTimeout(function Forma() 
+{ window.location.href = "login.html";},45001); });
+
+
+</script>
+<style> 
+
+body,html { 
+    overflow: hidden; 
+    }
+html,body {width:100%;
+	  margin:0;
+	  height:100%;
+	 
+	  background-size: cover;
+	  background-position: center; /* Center the image */
+	  background-repeat: no-repeat; /* Do not repeat the image */
+	  font-family: 'Helvetica', 'Arial', sans-serif;
+	  
+		}
+body {
+    text-align: center;
+}
+
+
+
+img {max-width:100%;
+	 height:auto;
+	 display:block;
+	}
+.fadein {
+    position:relative;
+    height:100%;
+    width:100%;
+}
+
+.fadein img {
+    position:absolute;
+    left:0;
+    top:0;
+}
+.kenburns-right {
+	animation: kenburns-right 15s ease-out both;
+}
+@keyframes kenburns-right {
+  0% {
+    transform: scale(1) translate(0, 0);
+    transform-origin: 84% 50%;
+  }
+  100% {
+    transform: scale(1.25) translateX(20px);
+    transform-origin: right;
+  }
+}
+.kenburns-left {
+	animation: kenburns-left 15s ease-out both;
+}
+@keyframes kenburns-left {
+  0% {
+    transform: scale(1) translate(0, 0);
+    transform-origin: 16% 50%;
+  }
+  100% {
+    transform: scale(1.25) translate(-20px, 15px);
+    transform-origin: left;
+  }
+
+
+
+
+</style>
+ 
+
+
+</head>
+<body>
+<div class="fadein">
+    <img class="kenburns-right" src="../powImg/4Kbear.png"/> 
+    <img class="kenburns-left" src="../powImg/4kmonkey.png"/>
+    <img class="kenburns-right" src="../powImg/4KDeer.png"/> 
+	
+
+
+</div>
+
+	
+
+</body>
+</html>
