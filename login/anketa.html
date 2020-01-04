@@ -1,0 +1,178 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../jquery.js"></script>
+<title>Anketa</title>
+<style> 
+body {width:100%;
+	  height:100%;
+	  background-size: cover;
+	  background-position: center; /* Center the image */
+	  background-repeat: no-repeat; /* Do not repeat the image */
+		font-family: 'Helvetica', 'Arial', sans-serif;	
+		}
+table {empty-cells:show;
+	   width:100%;
+	   height:100%;
+	  
+		
+	   }
+tr {width:100%;
+	height:20%;
+}
+td {
+	width:31%;}
+	
+* {box-sizing: border-box}
+
+.containeranketa {
+  padding: 5%;
+  width:90%;
+  background-color:rgb(254, 253, 251);
+	border-radius: 20px;
+	height:100%;
+	
+	
+}
+label {font-size : 1em;}
+h3 {font-size: 1.17em;}
+form {height:90%;
+width: 90%;
+
+}
+
+input {height:10%;}
+
+h3 {margin: 3% 10%;}
+
+hr {
+  border: 1px solid #dddddd;
+   margin-top: 1.5em;
+  margin-bottom: 1.5em;
+ 
+}
+
+.potvrdiBtn 
+{
+  padding: 5%;
+  margin: 3% 10%;
+  border: none;
+  background-color: rgb(30, 55, 82);
+  color : white;
+  cursor: pointer;
+  width: 30%;
+  opacity: 0.8;
+  border-radius: 20px;
+}
+
+.potvrdiBtn:hover { opacity:1;}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+.content {
+  position: fixed;
+  bottom: 0;
+ height:100%;
+  color: #f1f1f1;
+  width: 100%;
+  padding: 5%;
+}
+[type="checkbox"]
+{
+    vertical-align:middle;
+}
+ul {list-style-type: none;}
+</style>
+<script>
+$(document).ready(function() {
+
+//function makeCounter () {
+      //  var count = 0;
+       // return function() {
+        //    count++;
+        //    return count;
+       // }; };
+	
+var counter = 0;
+ //on ga kreira	
+ //unakrsno povezivanje , var zove funkciju,zvanjem vara na klik povecava se
+$("button").click(function() {
+var i = ++counter;
+switch(i) 
+{
+case 1  : 	var vr1 = document.querySelector('input[name="izboor"]:checked').value;
+			var postprvo = $.post( "phpradio.php",{kaunter:i,input:vr1} );
+			alert("prvi je");
+			$("ul").empty();
+			pitanje.innerText = "Mislite li da globalno zagrevanje ima negativan uticaj na naše okruženje?";
+			$("#odgovori").append('<li>   <input type="radio" name="izboor" value="A"> <label for="izboor" style="word-wrap:break-word"></label> Da </li> ');
+			$("#odgovori").append('<li>   <input type="radio" name="izboor" value="B"> <label for="izboor" style="word-wrap:break-word"></label> Ne </li> ');
+			$("#odgovori").append('<li>   <input type="radio" name="izboor" value="C"> <label for="izboor" style="word-wrap:break-word"></label> Nisam siguran </li> ');
+						break;	
+case 2  :	var vr2 = document.querySelector('input[name="izboor"]:checked').value;
+			var postdrugo = $.post( "phpradio.php",{kaunter:i,input:vr2},function(data){
+            alert(data); });
+			alert("drugi je");
+			$("ul").empty();
+			break;	
+default : 	var vrednost = document.querySelector('input[name="izboor"]:checked').value;
+			var posting = $.post( "phpradio.php",{kaunter:i,input:vrednost},function(data){
+            alert(data); });
+				alert("default je");
+}
+}); 
+
+
+});
+	
+
+</script>
+</head>
+<body>
+<video autoplay muted loop id="myVideo">
+  <source src="ForestClouds.mp4" type="video/mp4">
+</video>
+<div class="content">
+<table border='0'>
+<tr><td rowspan='5'>     
+
+
+	
+	 <form action="#" method="#">
+	  <div class="containeranketa">
+    <h3 id="pitanje">Da li ste svesni globalnog zagrevanja?</h3>
+  
+    <hr>
+
+    <ul id="odgovori" >
+	<li>   <input type="radio" name="izboor" value="A"> <label for="izboor" style="word-wrap:break-word">Ne</label>		 </li> 
+	 <li>   <input type="radio" name="izboor" value="B">  <label for="izboor" style="word-wrap:break-word"> Da, čuo sam za to, ali nisam siguran šta je   </label>	  </li> 
+	<li>       <input type="radio" name="izboor" value="C">  <label for="izboor" style="word-wrap:break-word"> Da, čuo sam za to i imam razumevanja o tome šta je </label>	  </li> 
+	<li>      <input type="radio" name="izboor" value="D">  <label for="izboor" style="word-wrap:break-word"> Da, čuo sam za to i dobro razumem šta je   </label>	  </li> 
+	
+	
+    </ul>
+    <hr>
+
+    
+    <button type="submit" class="potvrdiBtn" >Potvrdi</button>
+	</div>
+	</form>
+  
+  </td>  <td></td>        <td> </td></tr>
+<tr>    <td></td>        <td> </td></tr>
+<tr>     <td></td>        <td> </td></tr>
+<tr>     <td></td>        <td> </td></tr>
+<tr>     <td></td>        <td> </td></tr>
+</table>
+
+</div>
+
+</body>
+
+</html>

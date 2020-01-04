@@ -1,6 +1,9 @@
 <?php
+
 if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
+session_start();
+$_SESSION["korisnik"]= $_POST["usrname"];
 $myuser = $_POST['usrname'];
 $mymail = $_POST['psw'];
 $mymailrepeat = $_POST['psw-repeat'];
@@ -61,7 +64,7 @@ body {width:100%;
 table {empty-cells:show;
 	   width:100%;
 	   height:100%;
-	   b
+	   
 		
 	   }
 tr {width:100%;
@@ -130,10 +133,10 @@ a {
     <input type="text" placeholder="Unesi željeno ime" name="usrname" required>
 
     <label><b>Email</b></label>
-    <input type="email" placeholder="Unesi šifru" name="psw" required>
+    <input type="email" placeholder="Unesi šifru" name="psw" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
 
     <label ><b>Ponovi email</b></label>
-    <input type="email" placeholder="Ponovi email" name="psw-repeat" required>
+    <input type="email" placeholder="Ponovi email" name="psw-repeat" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
     <hr>
 
     <p>Registrujući se, prihvatate naše <a href="#">Uslove & Pravila</a>.</p>
