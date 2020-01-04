@@ -117,6 +117,8 @@ hr {
 a {
   color: dodgerblue;
 }
+
+
 	</style>
 </head>
 <body>
@@ -133,7 +135,7 @@ a {
     <input type="text" placeholder="Unesi željeno ime" name="usrname" required>
 
     <label><b>Email</b></label>
-    <input type="email" placeholder="Unesi šifru" name="psw" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
+    <input type="email" placeholder="Unesi email" name="psw" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
 
     <label ><b>Ponovi email</b></label>
     <input type="email" placeholder="Ponovi email" name="psw-repeat" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
