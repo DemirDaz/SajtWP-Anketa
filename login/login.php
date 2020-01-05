@@ -52,7 +52,7 @@ else
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Registracija</title>
 <style> 
 body {width:100%;
 	  height:100%;
