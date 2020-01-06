@@ -37,17 +37,22 @@ h1 {
 	font-size: 4em;
 	color:#ffffff;
 }
-.text-shadow-drop-top {
-	animation: text-shadow-drop-top 1s both;
+.tracking-in-contract {
+	animation: tracking-in-expand 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) 2s both;
 }
-@keyframes text-shadow-drop-top {
+@keyframes tracking-in-expand {
   0% {
-    text-shadow: 0 0 0 rgba(229, 11, 11, 0);
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
   }
   100% {
-    text-shadow: 0 -6px 18px rgba(229, 11, 11, 0.35);
+    opacity: 1;
   }
 }
+
 
 .vibrate-1 {
 	animation: vibrate-1 0.3s linear 10 3s both;
@@ -268,7 +273,7 @@ function explodePie (e) {
 </head>
 <body>
 <table border='0'>
-<tr> <td></td>      <td></td> <td rowspan='1' colspan='3'><div class="pozdrav"><h1 class="text-shadow-drop-top"> Hvala vam na vašem vremenu!</h1> </div></td>  </tr>
+<tr> <td></td>      <td></td> <td rowspan='1' colspan='3'><div class="pozdrav"><h1 class="tracking-in-contract"> Hvala vam na vašem vremenu!</h1> </div></td>  </tr>
 <tr> <td></td>    <td></td>		<td class="vibrate-1" rowspan='2' colspan='3'> <div id="chartContainer" style="width: 75%; height: 96%;margin:auto;"></div>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>   		</td> 	 </tr>
 <tr> <td></td>    <td></td>  </tr>

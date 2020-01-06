@@ -5,26 +5,7 @@
 <script src="../jquery.js"></script>
 
 
-<script>
-$( document ).ready(function(){
-$('.fadein img:gt(0)').hide();
 
-some = setInterval(function() {
-    $('.fadein :first-child').fadeOut()
-                             .next('img')
-                             .fadeIn()
-                             .end()
-                             .appendTo('.fadein');
-}, 15000);
-function stopSome() {
-clearInterval(some);}
-setTimeout(stopSome,30001); //45k bi poceo iz pocetka
-
-//setTimeout(function Forma() 
-//{ window.location.href = "login.html";},45001); });
-});
-
-</script>
 <style> 
 
 body,html { 
@@ -105,7 +86,27 @@ img {max-width:100%;
 
 </div>
 
-	
+<script>
+$(document).ready(function(){
+$('.fadein img:gt(0)').hide();
+
+some = setInterval(function() {
+    $('.fadein :first-child').fadeOut()
+                             .next('img')
+                             .fadeIn()
+                             .end()
+                             .appendTo('.fadein');
+}, 15000);
+function stopSome() {
+clearInterval(some);}
+setTimeout(stopSome,30001); //45k bi poceo iz pocetka
+
+setTimeout(function Forma() 
+{ window.location.href = "final.php";},45001);
+ });
+
+
+</script>
 
 </body>
 </html>
