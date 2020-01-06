@@ -89,6 +89,12 @@ input[type=text], input[type=email] {
   display: inline-block;
   border: none;
   background: #eaeaea;
+  -webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
 }
 input[type=text]:focus, input[type=email]:focus {
   background-color: #d8d8d8;

@@ -38,14 +38,40 @@ label {font-size : 1em;}
 
 form {height:100%;
 width: 90%;
-
 }
 
+
+.text-focus-in {
+	animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
+}
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
 input {height:8%;}
 
-h3 {
-font-size: 1.8em;
+h3#pitanje {
+animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+font-size: 1.6em;
 margin: 3% 10%;}
+
+@keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
 
 hr {
   border: 1px solid #dddddd;
@@ -117,7 +143,7 @@ ul {list-style-type: none;}
 }
 
 
-.checkmark {
+.radionew {
   position: absolute;
   top: 0;
   left: 0;
@@ -128,29 +154,29 @@ ul {list-style-type: none;}
 }
 
 
-.radioh:hover input ~ .checkmark {
+.radioh:hover input ~ .radionew {
   background-color: #ccc;
 }
 
 
-.radioh input:checked ~ .checkmark {
+.radioh input:checked ~ .radionew {
   background-color: #455e72;
 }
 
 
-.checkmark:after {
+.radionew:after {
   content: "";
   position: absolute;
   display: none;
 }
 
 
-.radioh input:checked ~ .checkmark:after {
+.radioh input:checked ~ .radionew:after {
   display: block;
 }
 
 
-.radioh .checkmark:after {
+.radioh .radionew:after {
   top: 0.39em;
   left: 0.40em;
   width: 0.42em;
@@ -158,18 +184,81 @@ ul {list-style-type: none;}
   border-radius: 50%;
   background: white;
 }
+
+/*kontejner za checkbox */
+.checkcont {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* sakriti default checkbox */
+.checkcont input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Novi check box */
+.checknew {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.20em;
+  width: 1.20em;
+  background-color: #eee;
+}
+
+/* hover checkboxa*/
+.checkcont:hover input ~ .checknew {
+  background-color: #ccc;
+}
+
+/* promeni pozadinu na check */
+.checkcont input:checked ~ .checknew {
+  background-color: #455e72;
+}
+
+/* pravi check koji je sakriven dok ne izabere? */
+.checknew:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* a ovo je stilizovanje checka */
+.checkcont .checknew:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Prikazi kad cekira */
+.checkcont input:checked ~ .checknew:after {
+  display: block;
+}
+
+
 </style>
 <script>
 $(function() {
 
-//function makeCounter () {
-      //  var count = 0;
-       // return function() {
-        //    count++;
-        //    return count;
-       // }; };
-	
-function Spoji()
+
+function Spoji() //za checkboxove
 {
   var favorite = [];
             $.each($("input[name='izboor']:checked"), function(){
@@ -179,183 +268,200 @@ function Spoji()
 	return spojen;
 }	
 var counter = 0;
- //on ga kreira	
- //unakrsno povezivanje , var zove funkciju,zvanjem vara na klik povecava se
+
+
+ 
 $("button").click(function() {
+
+if ( document.querySelector('input[name="izboor"]:checked') == null) 
+ alert("Odaberite odgovor da bi nastavili dalje.");
+
+else {
+
 var i = ++counter;
 event.preventDefault();
 switch(i) 
 {
 case 1  : 	var vr1 = document.querySelector('input[name="izboor"]:checked').value;
 			var postprvo = $.post( "phpradio.php",{kaunter:i,input:vr1} );
-			//alert("prvi je");
 			$("ul").empty();
-			pitanje.innerText = "Mislite li da globalno zagrevanje ima negativan uticaj na naše okruženje?";
-			$("#odgovori").append('<li> <label class="radioh"> Da  <input type="radio" name="izboor" value="A"/><span class="checkmark">  </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh"> Ne <input type="radio" name="izboor" value="B"/><span class="checkmark">  </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh"> Nisam siguran   <input type="radio" name="izboor" value="C"/><span class="checkmark"> </span></label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Mislite li da globalno zagrevanje ima negativan uticaj na naše okruženje?</h3>');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh"> Da  <input type="radio" name="izboor" value="A"/><span class="radionew">  </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh"> Ne <input type="radio" name="izboor" value="B"/><span class="radionew">  </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh"> Nisam siguran   <input type="radio" name="izboor" value="C"/><span class="radionew"> </span></label> </li> ');
 						break;	
 case 2  :	var vr2 = document.querySelector('input[name="izboor"]:checked').value;
-			var postdrugo = $.post( "phpradio.php",{kaunter:i,input:vr2},function(data){
-            alert(data); });
-			//alert("drugi je");
+			var postdrugo = $.post( "phpradio.php",{kaunter:i,input:vr2});
+		
 			$("ul").empty();
-			pitanje.innerText = "Koliko ste zabrinuti za globalno zagrevanje, na skali od jedan do pet? (1 = Nimalo / 5= Ekstremno zabrinut)";
-			$("#odgovori").append('<li> <label class="radioh" > 1 <input type="radio" name="izboor" value="A"/><span class="checkmark">   </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > 2 <input type="radio" name="izboor" value="B"/><span class="checkmark">  </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > 3 <input type="radio" name="izboor" value="C"/><span class="checkmark">  </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > 4 <input type="radio" name="izboor" value="D"/><span class="checkmark">  </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > 5 <input type="radio" name="izboor" value="E"/><span class="checkmark">  </span></label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Koliko ste zabrinuti za globalno zagrevanje, na skali od jedan do pet? (1 = Nimalo / 5= Ekstremno zabrinut)</h3>');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 1 <input type="radio" name="izboor" value="A"/><span class="radionew">   </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 2 <input type="radio" name="izboor" value="B"/><span class="radionew">  </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 3 <input type="radio" name="izboor" value="C"/><span class="radionew">  </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 4 <input type="radio" name="izboor" value="D"/><span class="radionew">  </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 5 <input type="radio" name="izboor" value="E"/><span class="radionew">  </span></label> </li> ');
 			break;	
 case 3  :	var vr3 = document.querySelector('input[name="izboor"]:checked').value;
-			var posttrece = $.post( "phpradio.php",{kaunter:i,input:vr3},function(data){
-            alert(data); });
-			//alert("treci je");
+			var posttrece = $.post( "phpradio.php",{kaunter:i,input:vr3});
+		
 			$("ul").empty();
-			pitanje.innerText = "Na vremenskoj skali, kada će uticaj globalnog zagrevanja biti glavni problem za naš život ? ";
-			$("#odgovori").append('<li> <label class="radioh" > Sada je  <input type="radio" name="izboor" value="A"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Neće još 10 godina <input type="radio" name="izboor" value="B"/><span class="checkmark"> </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" >  Neće još 20 godina <input type="radio" name="izboor" value="C"/><span class="checkmark"> </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Neće još 50 godina  <input type="radio" name="izboor" value="D"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" >  Neće uopšte  <input type="radio" name="izboor" value="E"/><span class="checkmark">  </span></label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Na vremenskoj skali, kada će uticaj globalnog zagrevanja biti glavni problem za naš život ? </h3>');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Sada je  <input type="radio" name="izboor" value="A"/><span class="radionew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Neće još 10 godina <input type="radio" name="izboor" value="B"/><span class="radionew"> </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" >  Neće još 20 godina <input type="radio" name="izboor" value="C"/><span class="radionew"> </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Neće još 50 godina  <input type="radio" name="izboor" value="D"/><span class="radionew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" >  Neće uopšte  <input type="radio" name="izboor" value="E"/><span class="radionew">  </span></label> </li> ');
 			break;	
 case 4  :	var vr4 = document.querySelector('input[name="izboor"]:checked').value;
-			var postcetvrto = $.post( "phpradio.php",{kaunter:i,input:vr4},function(data){
-            alert(data); });
-			//alert("cetvrti je");
+			var postcetvrto = $.post( "phpradio.php",{kaunter:i,input:vr4});
+			
 			$("ul").empty();
-			pitanje.innerText = "Mislite li da je ljudska aktivnost odgovorna za povećanje globalnog zagrevanja?";
-			$("#odgovori").append('<li> <label class="radioh" > Da   <input type="radio" name="izboor" value="A"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Ne <input type="radio" name="izboor" value="B"/><span class="checkmark">	 </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Nisam siguran <input type="radio" name="izboor" value="C"/><span class="checkmark">  </span></label>  </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Mislite li da je ljudska aktivnost odgovorna za povećanje globalnog zagrevanja ?</h3>');
+
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Da   <input type="radio" name="izboor" value="A"/><span class="radionew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Ne <input type="radio" name="izboor" value="B"/><span class="radionew">	 </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Nisam siguran <input type="radio" name="izboor" value="C"/><span class="radionew">  </span></label>  </li> ');
 			break;	
 case 5  :	var vr5 = document.querySelector('input[name="izboor"]:checked').value;
-			var postpeto = $.post( "phpradio.php",{kaunter:i,input:vr5},function(data){
-            alert(data); });
-			//alert("5 je");
+			var postpeto = $.post( "phpradio.php",{kaunter:i,input:vr5});
+			
 			$("ul").empty();
-			pitanje.innerText = "Koliko brzo mislite da bi trebalo nešto učiniti u vezi sa globalnim zagrevanjem? ";
-			$("#odgovori").append('<li> <label class="radioh" > Da, to je nešto što se može u potpunosti zaustaviti  <input type="radio" name="izboor" value="A"/><span class="checkmark"></span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Da, to je nešto što se može adekvatno rešiti, ali trajaće dugo <input type="radio" name="izboor" value="B"/><span class="checkmark"> </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Ne, previše je teško <input type="radio" name="izboor" value="C"/><span class="checkmark"> </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Nisam siguran <input type="radio" name="izboor" value="D"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Ono nije problem <input type="radio" name="izboor" value="E"/><span class="checkmark"> </span> </label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Da li verujete da se globalno zagrevanje može rešiti ?</h3>');
+
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Da, to je nešto što se može u potpunosti zaustaviti  <input type="radio" name="izboor" value="A"/><span class="radionew"></span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Da, to je nešto što se može adekvatno rešiti, ali trajaće dugo <input type="radio" name="izboor" value="B"/><span class="radionew"> </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Ne, previše je teško <input type="radio" name="izboor" value="C"/><span class="radionew"> </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Nisam siguran <input type="radio" name="izboor" value="D"/><span class="radionew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Ono nije problem <input type="radio" name="izboor" value="E"/><span class="radionew"> </span> </label> </li> ');
 			break;	
 case 6  :	var vr6 = document.querySelector('input[name="izboor"]:checked').value;
-			var postsesto = $.post( "phpradio.php",{kaunter:i,input:vr6},function(data){
-            alert(data); });
-			//alert("6 je");
+			var postsesto = $.post( "phpradio.php",{kaunter:i,input:vr6});
+			
 			$("ul").empty();
-			pitanje.innerText = "Da li verujete da se globalno zagrevanje može rešiti? ";
-			$("#odgovori").append('<li> <label class="radioh" > Sada <input type="radio" name="izboor" value="A"/><span class="checkmark"> </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Početi nešto raditi u narednih 5 godina <input type="radio" name="izboor" value="B"/><span class="checkmark"> </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Početi nešto raditi u narednih 10 godina <input type="radio" name="izboor" value="C"/><span class="checkmark"> </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Početi nešto raditi u narednih 20 godina <input type="radio" name="izboor" value="D"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Nikada, nije problem <input type="radio" name="izboor" value="E"/><span class="checkmark"> </span></label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Koliko brzo mislite da bi trebalo nešto učiniti u vezi sa globalnim zagrevanjem ?</h3>');
+
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Sada <input type="radio" name="izboor" value="A"/><span class="radionew"> </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Početi nešto raditi u narednih 5 godina <input type="radio" name="izboor" value="B"/><span class="radionew"> </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Početi nešto raditi u narednih 10 godina <input type="radio" name="izboor" value="C"/><span class="radionew"> </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Početi nešto raditi u narednih 20 godina <input type="radio" name="izboor" value="D"/><span class="radionew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Nikada, nije problem <input type="radio" name="izboor" value="E"/><span class="radionew"> </span></label> </li> ');
 			break;	
 case 7  :	var vr7 = document.querySelector('input[name="izboor"]:checked').value;
-			var postsedmo = $.post( "phpradio.php",{kaunter:i,input:vr7},function(data){
-            alert(data); });
-		//	alert("7 je");
+			var postsedmo = $.post( "phpradio.php",{kaunter:i,input:vr7});
+		
 			$("ul").empty();
-			pitanje.innerText = "Šta će od sledećeg po vašem mišljenju biti posledica globalnog zagrevanja? (odaberite sve što odgovara)";
-			$("#odgovori").append('<li> <label class="radioh" > Podizanje nivoa mora <input type="checkbox" name="izboor" value="A"/> <span class="checkmark"> </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Neravnomerni resursi pijuće vode <input type="checkbox" name="izboor" value="B"/><span class="checkmark"> </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Dezertifikacija – pretvaranje tla u pustinju  <input type="checkbox" name="izboor" value="C"/><span class="checkmark"></span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Manjak hrane <input type="checkbox" name="izboor" value="D"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Povecan rast biljki <input type="checkbox" name="izboor" value="E"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Izumiranje vrsta <input type="checkbox" name="izboor" value="F"/><span class="checkmark"> </span></label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Šta će od sledećeg po vašem mišljenju biti posledica globalnog zagrevanja? (odaberite sve što odgovara)</h3>');
+
+			
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Neravnomerni resursi pijuće vode <input type="checkbox" name="izboor" value="A"/><span class="checknew"> </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Dezertifikacija – pretvaranje tla u pustinju  <input type="checkbox" name="izboor" value="B"/><span class="checknew"></span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Manjak hrane <input type="checkbox" name="izboor" value="C"/><span class="checknew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Povećan rast biljki <input type="checkbox" name="izboor" value="D"/><span class="checknew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Izumiranje vrsta <input type="checkbox" name="izboor" value="E"/><span class="checknew"> </span></label> </li> ');
 			break;	
 case 8  :	var vr8 = Spoji();
-			var postosmo = $.post( "phpradio.php",{kaunter:i,input:vr8},function(data){
-            alert(data); });
-			//alert("8mi je");
+			var postosmo = $.post( "phpradio.php",{kaunter:i,input:vr8});
+			
 			$("ul").empty();
-			pitanje.innerText = "Od 1900. godine do danas, koji verujete da je porast prosečne globalne temperature ? (u stepenima Celzijusa)";
-			$("#odgovori").append('<li> <label class="radioh" > 0 – 0.5 <input type="radio" name="izboor" value="A"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > 0.5 – 1 <input type="radio" name="izboor" value="B"/><span class="checkmark">  </span> </label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > 1 – 1.5 <input type="radio" name="izboor" value="C"/><span class="checkmark">  </span> </label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > 1.5 – 2 <input type="radio" name="izboor" value="D"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > 2 – 3 <input type="radio" name="izboor" value="E"/><span class="checkmark">  </span>  </label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Od 1900. godine do danas, koji verujete da je porast prosečne globalne temperature ? (u stepenima Celzijusa)</h3>');
+
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 0 – 0.5 <input type="radio" name="izboor" value="A"/><span class="radionew">  </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 0.5 – 1 <input type="radio" name="izboor" value="B"/><span class="radionew">  </span> </label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 1 – 1.5 <input type="radio" name="izboor" value="C"/><span class="radionew">  </span> </label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 1.5 – 2 <input type="radio" name="izboor" value="D"/><span class="radionew">  </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > 2 – 3 <input type="radio" name="izboor" value="E"/><span class="radionew">  </span>  </label> </li> ');
 			break;	
 case 9  :	var vr9 = document.querySelector('input[name="izboor"]:checked').value;
-			var postdeveto = $.post( "phpradio.php",{kaunter:i,input:vr9},function(data){
-            alert(data); });
-			//alert("devet je");
+			var postdeveto = $.post( "phpradio.php",{kaunter:i,input:vr9});
+		
 			$("ul").empty();
-			pitanje.innerText = "Odakle uobičajeno dobijate vesti o Klimatskim Promenama/Efektu staklene bašte/Globalnom Zagrevanju? (odaberite sve što odgovara)";
-			$("#odgovori").append('<li> <label class="radioh" > Novine <input type="checkbox" name="izboor" value="A"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Knjige <input type="checkbox" name="izboor" value="B"/><span class="checkmark">  </span> </label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Web-sajtovi <input type="checkbox" name="izboor" value="C"/><span class="checkmark">  </span> </label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > TV <input type="checkbox" name="izboor" value="D"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Mobilne aplikacije <input type="checkbox" name="izboor" value="E"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" >  Radio <input type="checkbox" name="izboor" value="F"/><span class="checkmark"> </span> </label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Odakle uobičajeno dobijate vesti o Klimatskim Promenama/Efektu staklene bašte/Globalnom Zagrevanju? (odaberite sve što odgovara)</h3>');
+
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Novine <input type="checkbox" name="izboor" value="A"/><span class="checknew">  </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Knjige <input type="checkbox" name="izboor" value="B"/><span class="checknew">  </span> </label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Web-sajtovi <input type="checkbox" name="izboor" value="C"/><span class="checknew">  </span> </label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > TV <input type="checkbox" name="izboor" value="D"/><span class="checknew">  </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Mobilne aplikacije ( npr. socijalne mreže) <input type="checkbox" name="izboor" value="E"/><span class="checknew">  </span> </label> </li> ');
+			
 			break;
 case 10  :	var vr10 = Spoji();
-			var postde = $.post( "phpradio.php",{kaunter:i,input:vr10},function(data){
-            alert(data); });
-			//alert("deseti je");
+			var postde = $.post( "phpradio.php",{kaunter:i,input:vr10});
+			
 			$("ul").empty();
-			pitanje.innerText = "Kako biste ocenili kvalitet javnog prevoza u vašem lokalnom području?";
-			$("#odgovori").append('<li> <label class="radioh" >Odličan <input type="radio" name="izboor" value="A"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" >Dobar<input type="radio" name="izboor" value="B"/><span class="checkmark">  </span> </label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" >Prosečan <input type="radio" name="izboor" value="C"/><span class="checkmark">  </span> </label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" >Loš <input type="radio" name="izboor" value="D"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Ne znam <input type="radio" name="izboor" value="E"/><span class="checkmark">  </span>  </label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Kako biste ocenili kvalitet javnog prevoza u vašem lokalnom području?</h3>');
+			
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" >Odličan <input type="radio" name="izboor" value="A"/><span class="radionew">  </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" >Dobar<input type="radio" name="izboor" value="B"/><span class="radionew">  </span> </label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" >Prosečan <input type="radio" name="izboor" value="C"/><span class="radionew">  </span> </label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" >Loš <input type="radio" name="izboor" value="D"/><span class="radionew">  </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Ne znam <input type="radio" name="izboor" value="E"/><span class="radionew">  </span>  </label> </li> ');
 			break;		
 case 11  :	var vr11 = document.querySelector('input[name="izboor"]:checked').value;
-			var postje = $.post( "phpradio.php",{kaunter:i,input:vr11},function(data){
-            alert(data); });
-		//	alert("11 je");
+			var postje = $.post( "phpradio.php",{kaunter:i,input:vr11});
+		
 			$("ul").empty();
-			pitanje.innerText = "Da li je ikada zagađenje vazduha uticalo na vaše zdravlje?";
-			$("#odgovori").append('<li> <label class="radioh" > Da   <input type="radio" name="izboor" value="A"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Ne <input type="radio" name="izboor" value="B"/><span class="checkmark">	 </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Ne znam <input type="radio" name="izboor" value="C"/><span class="checkmark">  </span></label>  </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Da li je ikada zagađenje vazduha uticalo na vaše zdravlje?</h3>');
+			
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Da   <input type="radio" name="izboor" value="A"/><span class="radionew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Ne <input type="radio" name="izboor" value="B"/><span class="radionew">	 </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Ne znam <input type="radio" name="izboor" value="C"/><span class="radionew">  </span></label>  </li> ');
 			break;	
 case 12  :	var vr12 = document.querySelector('input[name="izboor"]:checked').value;
-			var postdv = $.post( "phpradio.php",{kaunter:i,input:vr12},function(data){
-            alert(data); });
-			//alert("12 je");
+			var postdv = $.post( "phpradio.php",{kaunter:i,input:vr12});
+			
 			$("ul").empty();
-			pitanje.innerText = "Da li ste lično spremni učiniti nešto u vezi sa globalnim zagrevanjem? ";
-			$("#odgovori").append('<li> <label class="radioh" > Da   <input type="radio" name="izboor" value="A"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Ne <input type="radio" name="izboor" value="B"/><span class="checkmark">	 </span></label>  </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Da li ste lično spremni učiniti nešto u vezi sa globalnim zagrevanjem?</h3>');
+	
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Da   <input type="radio" name="izboor" value="A"/><span class="radionew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Ne <input type="radio" name="izboor" value="B"/><span class="radionew">	 </span></label>  </li> ');
 			break;
 case 13  :	var vr13 = document.querySelector('input[name="izboor"]:checked').value;
-			var posttr = $.post( "phpradio.php",{kaunter:i,input:vr13},function(data){
-            alert(data); });
-			//alert("13 je");
+			var posttr = $.post( "phpradio.php",{kaunter:i,input:vr13});
+			
 			$("ul").empty();
-			pitanje.innerText = "Vjerujete li da će vas delovanje na Globalnom zagrevanju finansijski koštati?";
-			$("#odgovori").append('<li> <label class="radioh" > Da   <input type="radio" name="izboor" value="A"/><span class="checkmark"> </span></label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Ne <input type="radio" name="izboor" value="B"/><span class="checkmark">	 </span></label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Nisam siguran <input type="radio" name="izboor" value="C"/><span class="checkmark">  </span></label>  </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Vjerujete li da će vas delovanje na Globalno zagrevanje finansijski koštati?</h3>');
+		
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Da   <input type="radio" name="izboor" value="A"/><span class="radionew"> </span></label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Ne <input type="radio" name="izboor" value="B"/><span class="radionew">	 </span></label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="radioh" > Nisam siguran <input type="radio" name="izboor" value="C"/><span class="radionew">  </span></label>  </li> ');
 			break;	
 case 14  :	var vr14 = document.querySelector('input[name="izboor"]:checked').value;
-			var postcet = $.post( "phpradio.php",{kaunter:i,input:vr14},function(data){
-            alert(data); });
-		//	alert("14 je");
+			var postcet = $.post( "phpradio.php",{kaunter:i,input:vr14});
+		
 			$("ul").empty();
-			pitanje.innerText = "Ko bi po vašem mišljenju trebao imati glavnu odgovornost za rješavanje problema klimatskih promjena? (odaberite sve što odgovara)";
-			$("#odgovori").append('<li> <label class="radioh" > Međunarodne organizacije (npr. UN) <input type="checkbox" name="izboor" value="A"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Nacionalna vlada <input type="checkbox" name="izboor" value="B"/><span class="checkmark">  </span> </label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Lokalna samouprava <input type="checkbox" name="izboor" value="C"/><span class="checkmark">  </span> </label>  </li> ');
-			$("#odgovori").append('<li> <label class="radioh" >Biznis i industrija <input type="checkbox" name="izboor" value="D"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Organizacije za zaštitu životne sredine / lobističke grupe (npr. Svetski fond za prirodu) <input type="checkbox" name="izboor" value="E"/><span class="checkmark">  </span> </label> </li> ');
-			$("#odgovori").append('<li> <label class="radioh" > Pojedinci ( Jeff Bezos, Bill Gates, Kylie Jenner…) <input type="checkbox" name="izboor" value="F"/><span class="checkmark"> </span> </label> </li> ');
+			$(".naslov").empty();
+			$(".naslov").append( '<h3 id="pitanje">Ko bi po vašem mišljenju trebao imati glavnu odgovornost za rješavanje problema klimatskih promjena? (odaberite sve što odgovara)</h3>');
+			
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Međunarodne organizacije (npr. UN) <input type="checkbox" name="izboor" value="A"/><span class="checknew">  </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Lokalna samouprava <input type="checkbox" name="izboor" value="B"/><span class="checknew">  </span> </label>  </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" >Biznis i industrija <input type="checkbox" name="izboor" value="C"/><span class="checknew">  </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Organizacije za zaštitu životne sredine / lobističke grupe (npr. Svetski fond za prirodu) <input type="checkbox" name="izboor" value="C"/><span class="checknew">  </span> </label> </li> ');
+			$("#odgovori").append('<li class="text-focus-in"> <label class="checkcont" > Pojedinci ( Jeff Bezos, Bill Gates, Kylie Jenner…) <input type="checkbox" name="izboor" value="D"/><span class="checknew"> </span> </label> </li> ');
 			break;
 case 15 : 		var vr15 = Spoji();
 				
-			var postnes = $.post( "phpradio.php",{kaunter:i,input:vr15},function(data){
-            alert(data); });
+			var postnes = $.post( "phpradio.php",{kaunter:i,input:vr15});
 			document.location.href = 'slajd.html';
 			break;
 default : 	
 				alert("default je");
 				break;
 }
-}); 
+}
+ }); 
 
 
 });
@@ -375,15 +481,17 @@ default :
 	
 	 <form action="#" method="#">
 	  <div class="containeranketa">
+	  <div class="naslov">
     <h3 id="pitanje">Da li ste svesni globalnog zagrevanja?</h3>
+	</div>
   
     <hr>
 
     <ul id="odgovori" >
-	<li>  <label class="radioh"> Ne   <input type="radio" name="izboor" value="A"/> <span class="checkmark"></span></label>		 </li> 
-	 <li>  <label class="radioh"> Da, čuo sam za to, ali nisam siguran šta je  <input type="radio" name="izboor" value="B"/> <span class="checkmark">   </span> </label>	  </li> 
-	<li>   <label class="radioh">   Da, čuo sam za to i imam razumevanja o tome šta je  <input type="radio" name="izboor" value="C"/> <span class="checkmark">  </span> </label>	  </li> 
-	<li>   <label class="radioh"> Da, čuo sam za to i dobro razumem šta je  <input type="radio" name="izboor" value="D"/> <span class="checkmark">  </span> </label>	  </li> 
+	<li class="text-focus-in">  <label class="radioh"> Da, čuo sam za to i dobro razumem šta je  <input type="radio" name="izboor" value="A"/> <span class="radionew"></span></label>		 </li> 
+	<li class="text-focus-in">  <label class="radioh"> Da, čuo sam za to i imam razumevanja o tome šta je <input type="radio" name="izboor" value="B"/> <span class="radionew">   </span> </label>	  </li> 
+	<li class="text-focus-in">   <label class="radioh"> Da, čuo sam za to, ali nisam siguran šta je  <input type="radio" name="izboor" value="C"/> <span class="radionew">  </span> </label>	  </li> 
+	<li class="text-focus-in">   <label class="radioh"> Ne  <input type="radio" name="izboor" value="D"/> <span class="radionew">  </span> </label>	  </li> 
 	
 	
     </ul>
