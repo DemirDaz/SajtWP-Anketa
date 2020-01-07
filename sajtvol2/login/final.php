@@ -7,7 +7,7 @@
 body {width:100%;
 	  height:100%;
 	
-	  background: url("1963154.jpg");
+	  /* background: url("1963154.jpg"); */
 	  background-size: cover;
 	  background-position: center; /* Center the image */
 	  background-repeat: no-repeat; /* Do not repeat the image */
@@ -26,7 +26,13 @@ td {
 	width:20%;}
 	
  * {box-sizing: border-box} 
-
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
 .pozdrav {
 	
 	text-align:center;
@@ -272,10 +278,13 @@ function explodePie (e) {
 </script>
 </head>
 <body>
+<video autoplay muted loop id="myVideo">
+  <source src="wildfireee.mp4" type="video/mp4">
+</video>
 <table border='0'>
-<tr> <td></td>      <td></td> <td rowspan='1' colspan='3'><div class="pozdrav"><h1 class="tracking-in-contract"> Hvala vam na vašem vremenu!</h1> </div></td>  </tr>
-<tr> <td></td>    <td></td>		<td class="vibrate-1" rowspan='2' colspan='3'> <div id="chartContainer" style="width: 75%; height: 96%;margin:auto;"></div>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>   		</td> 	 </tr>
+<tr> <td></td>  <td rowspan='1' colspan='3'><div class="pozdrav"><h1 class="tracking-in-contract"> Hvala vam na vašem vremenu!</h1> </div></td>     <td></td>  </tr>
+<tr> <td></td>   <td class="vibrate-1" rowspan='2' colspan='3'> <div id="chartContainer" style="width: 80%; height: 96%;margin:auto;"></div>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>   		</td>  <td></td>			 </tr>
 <tr> <td></td>    <td></td>  </tr>
 <tr> <td></td>    <td></td> <td></td>  <td></td> <td></td> <td></td>    </tr>
 <tr> <td></td>    <td></td>  <td></td> <td></td> <td></td>  </tr>
