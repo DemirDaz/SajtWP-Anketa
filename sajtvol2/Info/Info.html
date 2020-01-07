@@ -1,39 +1,40 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Informacije</title>
-<script src="../jquery.js"></script>
+<script type="text/javascript" src="../jquery.js"></script>
+<style type="text/css"> 
 
-<style> 
 
-body,html { 
-    overflow: hidden; 
-    }
-html,body {width:100%;
-	  margin:0;
-	  height:100%;
+html,body {
+	    height:100%;
+		width:100%;
+		max-height: 100%;
+	   margin:0px;
+	   overflow:hidden;
 	  background-color:rgba(240, 240, 240,1);
 	  background-size: cover;
-	  background-position: center; /* Center the image */
-	  background-repeat: no-repeat; /* Do not repeat the image */
-	  font-family: 'Helvetica', 'Arial', sans-serif;
+	  background-position: center; 
+	  background-repeat: no-repeat; 
+	  font-family: 'Helvetica', 'Arial', 'sans-serif';
 		}
 
 
 table {empty-cells:show;
-	    width:100%;
-	    height:100%;
-		  background-size: 100% 100%; 
-		/* background-position: center;  Center the image */
-		/* background-repeat: no-repeat;  Do not repeat the image */
-		
-	   }
+		height:100%;
+		width:100%;
+		 }
 tr {width:100%;
 	height:20%;
 }
 td {
 	width:20%;
-	height:100%;}
+	}
+ul 
+{
+padding-left:0px;
+}
 img {max-width:100%;
 	 height:auto;
 	 display:block;
@@ -49,12 +50,14 @@ img {max-width:100%;
     opacity: 1;
   }
 }
-#rcorner {
+.rcorner {
   border-radius: 15px;
   background-color:rgba(240, 240, 240,0.7);
-  margin:auto;
-  width:98%;
-  height:98%;
+  margin:0em 0.625em;
+  padding-top:1.5%;
+  padding-right:1.2%;
+  width:100%;
+  height:100%;
  }
 
 @keyframes glow {
@@ -78,36 +81,31 @@ img {max-width:100%;
   }
 }
 
-
-li::before {content: "•"; color: red;
-    display: inline-block; width: 1em;
+* {box-sizing: border-box}
+li::before {content: "•"; 
+color: red;
+    display: inline-block;
+	width: 1em;
   margin-left: -1em;}
 
-/*ul li::before {
-  content: "\2022";  
-  color: red; 
-  font-weight: bold; 
-  display: inline-block; 
-  width: 1em; 
-  margin-left: -1em;  } */
+
   
 #rcenter{
   border-radius: 0;
   background-color:rgba(240, 240, 240,0.7);
-  margin:auto;
+	margin:0em 0.625em;
   padding-top:1.2%;
   width:100%;
   height:100%;
   text-align:center;
-  margin-bottom:0;
+  
   padding-bottom:0;
   }
 
-#boxshadow 
+.boxshadow 
 {
 margin:auto;
 vertical-align:middle;
-
 width:30%;
 height:auto;
 }
@@ -214,38 +212,53 @@ height:auto;
     opacity: 1;
   }
 }
-h1 {color: rgba(239, 18, 0, 1);font-size:1.5vw;text-align:center;padding-top:5%;text-shadow: 0px 0px 3px rgba(6, 44, 65, 1),0px 0px 20px rgba(6, 44, 65, 1)} /* animation: glow 1s ease-in-out infinite alternate; */
-p {font-size:0.90vw;text-align:justify;padding-top:2%;padding-left:2%;padding-right:2%;text-shadow: 0 0 3px rgb(142, 216, 250);}
+h1 {color: rgba(239, 18, 0, 1);
+	padding-top:1.5%;
+	font-size:1.5em;
+	text-align:center;
+	
+	text-shadow: 0px 0px 3px rgba(6, 44, 65, 1),0px 0px 20px rgba(6, 44, 65, 1)} 
+	
+p {font-size:1.15em;
+text-align:justify;
+
+margin:0;
+padding-left:2%;
+padding-right:2%;
+
+
+text-shadow: 0px 0px 3px rgb(142, 216, 250);}
 </style>
 
 </head>
 <body> 
 
-<table border='0' class="fade-in" background="starrysky.jpg" > 
-<tr> <td class="slide-in-fwd-center" rowspan='2'><div id="rcorner">
-	 <h1>Šta je globalno zagrevanje?</h1><p>Tokom poslednjih 50 godina, prosečna globalna temperatura porasla je po najbržoj stopi u zapisanoj istoriji. A stručnjaci vide da se trend ubrzava: Sve osim jedne od 16 najzgodnijih godina u NASA-inoj 134-godišnjoj evidenciji dogodile su se od 2000. godine. Pobijači klimatskih promena tvrdili su da je došlo do „pauze“ ili „usporavanja“ u porastu globalnih temperatura, ali nekoliko nedavnih studija, uključujući i rad iz 2015. objavljen u časopisu Science, opovrgavalo je ovu tvrdnju. </p>
-	</div></td> <td class="slide-in-blurred-top" rowspan='3'><div id="rcorner"><p>Smanjivanje opasnih klimatskih promena zahteva veoma duboko smanjenje emisija, kao i upotrebu alternativa fosilnim gorivima širom sveta. Dobra vest je da smo započeli preokret: emisija CO2 zapravo se smanjila od 2005. do 2014. godine, delom zahvaljujući novoj, energetski efikasnoj tehnologiji i upotrebi čistijih goriva. Naučnici nastavljaju da razvijaju nove načine modernizacije elektrana, stvaranja čistije električne energije i sagorevanja manje benzina dok se vozimo. Izazov je biti siguran da će se ta rešenja koristiti i široko usvojiti.</p>
-	<img src="planeta.png" style="height:40%;width:70%;margin:auto;" /></div>
-	</td> <td class="slide-in-top" rowspan='5'> <div id="rcenter" style="vertical-align:middle;margin:auto;"><h1>Koji su drugi efekti globalnog zagrevanja?</h1><p>Svake godine naučnici saznaju više o posledicama globalnog zagrevanja, a mnogi se slažu da će verovatno doći do posledica po životnu sredinu, ekonomiju i zdravlje ako se nastave trenutni trendovi. Evo samo naglog šta možemo da se radujemo: </p>
-  <ul style="list-style: none;padding-inline-start: 2px;">
+<table class="fade-in" style="background:url('starrysky.jpg');background-size:cover;"> 
+<tr> <td class="slide-in-fwd-center" rowspan='2'><div class="rcorner">
+	 <h1>Šta je globalno zagrevanje?</h1><p>Tokom poslednjih 50 godina, prosečna globalna temperatura porasla je po najbržoj stopi u zapisanoj istoriji. A stručnjaci vide da se trend ubrzava: Sve osim jedne od 16 najzgodnijih godina u NASA-inoj 134-godišnjoj evidenciji dogodile su se od 2000. godine. Pobijači klimatskih promena tvrdili su da je došlo do „pauze“ ili „usporavanja“ u porastu globalnih temperatura, ali nekoliko nedavnih studija, uključujući i rad iz 2015. objavljen u časopisu Science, opovrgavalo je ovu tvrdnju.</p></div></td> 
+	 <td class="slide-in-blurred-top" rowspan='3'><div class="rcorner"><p>Smanjivanje opasnih klimatskih promena zahteva veoma duboko smanjenje emisija, kao i upotrebu alternativa fosilnim gorivima širom sveta. Dobra vest je da smo započeli preokret: emisija CO2 zapravo se smanjila od 2005. do 2014. godine, delom zahvaljujući novoj, energetski efikasnoj tehnologiji i upotrebi čistijih goriva. Naučnici nastavljaju da razvijaju nove načine modernizacije elektrana, stvaranja čistije električne energije i sagorevanja manje benzina dok se vozimo. Izazov je biti siguran da će se ta rešenja koristiti i široko usvojiti.</p>
+	<img alt="slika" src="planeta.png" style="width:70%;margin:auto" /></div>
+	</td> <td class="slide-in-top" rowspan='5'> <div id="rcenter" style="vertical-align:middle;"><h1>Koji su drugi efekti globalnog zagrevanja?</h1><p>Svake godine naučnici saznaju više o posledicama globalnog zagrevanja, a mnogi se slažu da će verovatno doći do posledica po životnu sredinu, ekonomiju i zdravlje ako se nastave trenutni trendovi. Evo samo naglog šta možemo da se radujemo: </p>
+  <ul style="list-style: none;">
     <li><p style="margin-top:0.5em ;margin-bottom:0.5em;">Topljenje ledenjaka, rano otapanje snijega i jake suše uzrokovat će dramatičnije nestašice vode i povećati rizik od požara na američkom zapadu.</p></li>
 		<li><p style="margin-top:0.5em ;margin-bottom:0.5em;">Rast nivoa mora dovesti će do obalnih poplava na Istočnoj obali mora, posebno na Floridi, i u drugim oblastima kao što je Meksički zaljev.</p></li>
 		<li><p style="margin-top:0.5em ;margin-bottom:0.5em;">Šume, farme i gradovi suočiće se sa novim problematičnim štetočinama, toplotnim talasima, jakim pljuskovima i povećanim poplavama. Svi ti faktori će oštetiti ili uništiti poljoprivredu i ribarstvo.</p></li>
 		<li><p style="margin-top:0.5em ;margin-bottom:0.5em;">Povreda staništa kao što su koralni grebeni i alpske livade moglo bi odvesti mnoge biljne i životinjske vrste do istrebljenja.</p></li>
 		<li><p style="margin-top:0.5em ;margin-bottom:0.5em;">Alergije, astma i epidemije zaraznih bolesti postaće češći zbog povećanog rasta amputa, koje proizvode polen, većeg nivoa zagađenja vazduha i širenja uslova povoljnih za patogene i komarce.</p></li>
 	</ul></div> </td> 
-	<td class="slide-in-fwd-center30" rowspan='2' colspan='2'><div id="rcorner"><h1>Pitate se kako zaustaviti globalno zagrevanje?</h1><p>Smanjite sopstveni otisak ugljenika prateći nekoliko jednostavnih koraka. Učinite da štednja energije bude dio vaše svakodnevne rutine i vaših odluka kao potrošača. Kada kupujete nove uređaje poput frižidera, mašina za pranje i sušara, tražite proizvode sa vladinom oznakom Energi Star; oni ispunjavaju viši standard za energetsku efikasnost od minimalnih saveznih zahteva. Kada kupujete automobil, tražite automobil sa najvećom kilometražom gasa i najmanjom emisijom izduvnih gasova. Takođe možete smanjiti svoje emisije javnim prevozom ili parkiranjem automobila ako je to moguće.
+	<td class="slide-in-fwd-center30" rowspan='2' colspan='2'><div class="rcorner"><h1>Pitate se kako zaustaviti globalno zagrevanje?</h1><p>Smanjite sopstveni otisak ugljenika prateći nekoliko jednostavnih koraka. Učinite da štednja energije bude dio vaše svakodnevne rutine i vaših odluka kao potrošača. Kada kupujete nove uređaje poput frižidera, mašina za pranje i sušara, tražite proizvode sa vladinom oznakom Energi Star; oni ispunjavaju viši standard za energetsku efikasnost od minimalnih saveznih zahteva. Kada kupujete automobil, tražite automobil sa najvećom kilometražom gasa i najmanjom emisijom izduvnih gasova. Takođe možete smanjiti svoje emisije javnim prevozom ili parkiranjem automobila ako je to moguće.
 I dok su novi savezni i državni standardi korak u pravom smjeru, treba učiniti mnogo više. Izrazite svoju podršku klimatskim i klimatskim pripremama prilagođenim klimatskim promenama i recite svojim predstavnicima da prelazak sa prljavih fosilnih goriva na čistu energiju treba da bude glavni prioritet - jer je to od vitalnog značaja za izgradnju zdravih, sigurnijih zajednica.
 </p></div></td> </tr>
-<tr>       </tr>
-<tr> <td class="roll-in-left"><a href="Info.html"><img id="boxshadow" src="repeatBtn.png"/></a></td>       <td class="slide-in-blurred-bottom" rowspan='3'><div id="rcorner"><p>Posljednjih godina Kina je preuzela vodeću ulogu u globalnom zagrijavanju ,zagađujući i stvarajući oko 28 posto svih emisija CO2. Sjedinjene Države dolaze na drugo mesto. Uprkos tome da čine samo 4 procenta svetske populacije, proizvode ogromnih 16 procenata svih svetskih emisija CO2 - koliko su Evropska unija i Indija (treće i četvrto mesto) zajedno. A Amerika je i dalje broj jedan, daleko po kumulativnim emisijama u poslednjih 150 godina. Odgovornost zemalja je važna za sve nas.</p><img src="dim.png" style="margin:auto;height:40%;" /></div></td> <td class="roll-in-right"><a href="../login/login.php"><img id="boxshadow" src="forwardBtn.png"/></a></td></tr>
-<tr> <td class="slide-in-fwd-center30" rowspan='2' colspan='2'><div id="rcorner"><h1>Kako je globalno zagrevanje povezano sa ekstremnim vremenom?</h1><p>Naučnici se slažu da rastuće temperature Zemlje podstiču duže i toplije toplotne talase, češće suše, jače kiše i jače uragane. Zemljine okeanske temperature takođe postaju toplije - što znači da tropske oluje mogu pokupiti više energije. Tako bi globalno zagrevanje moglo pretvoriti, recimo, oluju kategorije 3 u opasniju oluju kategorije 4. U stvari, naučnici su otkrili da se učestalost uragana u severnom Atlantiku povećavala od početka 1980-ih, kao i broj oluja koje dostižu kategorije 4 i 5. Uticaj globalnog zagrevanja oseti se širom sveta. Ekstremni toplotni talasi poslednjih godina prouzrokovali su desetine hiljada smrti širom sveta. A u alarmantnom znaku događaja koji slede, Antarktika gubi oko 134 milijarde metričkih tona leda godišnje od 2002. Ova stopa bi se mogla ubrzati ako nastavimo sagorevanje fosilnih goriva sadašnjim tempom, kažu neki stručnjaci, uzrokujući da nivo mora padne na porasti nekoliko metara tokom narednih 50 do 150 godina.</p></div></td>  
-  <td class="slide-in-fwd-center10" rowspan='2'><div id="rcorner"><h1>Šta izaziva globalno zagrevanje?</h1><p>Globalno zagrevanje nastaje kada se ugljen-dioksid (CO2) i drugi zagađivači vazduha i staklenički gasovi sakupljaju u atmosferi i apsorbuju sunčevu svetlost i solarnu radijaciju koji su odskakali od zemljine površine. Obično bi ovo zračenje pobeglo u svemir - ali ovi zagađivači, koji u atmosferi mogu da traju godinama i vekovima, zarobe toplotu i prouzrokuju topliju planetu. To je ono što se naziva efekat staklene bašte.</p></div></td></tr>
-<tr>                       </tr>
+<tr><td></td> <td></td> <td></td> <td></td> <td></td>  </tr>
+
+<tr> <td class="roll-in-left"><a href="Info.html"><img alt="dugme" class="boxshadow" src="repeatBtn.png"/></a></td>       <td class="slide-in-blurred-bottom" rowspan='3'><div class="rcorner"><p>Posljednjih godina Kina je preuzela vodeću ulogu u globalnom zagrijavanju ,zagađujući i stvarajući oko 28 posto svih emisija CO2. Sjedinjene Države dolaze na drugo mesto. Uprkos tome da čine samo 4 procenta svetske populacije, proizvode ogromnih 16 procenata svih svetskih emisija CO2 - koliko su Evropska unija i Indija (treće i četvrto mesto) zajedno. A Amerika je i dalje broj jedan, daleko po kumulativnim emisijama u poslednjih 150 godina. Odgovornost zemalja je važna za sve nas.</p><img alt="slika" src="dim.png" style="margin:auto;width:70%" /></div></td> <td class="roll-in-right"><a href="../login/login.php"><img alt="dugme" class="boxshadow" src="forwardBtn.png"/></a></td></tr>
+<tr> <td class="slide-in-fwd-center30" rowspan='2' colspan='2'><div class="rcorner"><h1>Kako je globalno zagrevanje povezano sa ekstremnim vremenom?</h1><p>Naučnici se slažu da rastuće temperature Zemlje podstiču duže i toplije toplotne talase, češće suše, jače kiše i jače uragane. Zemljine okeanske temperature takođe postaju toplije - što znači da tropske oluje mogu pokupiti više energije. Tako bi globalno zagrevanje moglo pretvoriti, recimo, oluju kategorije 3 u opasniju oluju kategorije 4. U stvari, naučnici su otkrili da se učestalost uragana u severnom Atlantiku povećavala od početka 1980-ih, kao i broj oluja koje dostižu kategorije 4 i 5. Uticaj globalnog zagrevanja oseti se širom sveta. Ekstremni toplotni talasi poslednjih godina prouzrokovali su desetine hiljada smrti širom sveta. A u alarmantnom znaku događaja koji slede, Antarktika gubi oko 134 milijarde metričkih tona leda godišnje od 2002. Ova stopa bi se mogla ubrzati ako nastavimo sagorevanje fosilnih goriva sadašnjim tempom, kažu neki stručnjaci, uzrokujući da nivo mora padne na porasti nekoliko metara tokom narednih 50 do 150 godina.</p></div></td>  
+  <td class="slide-in-fwd-center10" rowspan='2'><div class="rcorner"><h1>Šta izaziva globalno zagrevanje?</h1><p>Globalno zagrevanje nastaje kada se ugljen-dioksid (CO2) i drugi zagađivači vazduha i staklenički gasovi sakupljaju u atmosferi i apsorbuju sunčevu svetlost i solarnu radijaciju koji su odskakali od zemljine površine. Obično bi ovo zračenje pobeglo u svemir - ali ovi zagađivači, koji u atmosferi mogu da traju godinama i vekovima, zarobe toplotu i prouzrokuju topliju planetu. To je ono što se naziva efekat staklene bašte.</p></div></td></tr>
+
 </table>
 
-<script>
-$(document).ready(function() {
+<!--  <script>
+ $(document).ready(function() {
 
 var backgrounds =new Array('#f0f0f0');
 var current = 0;
@@ -258,6 +271,6 @@ $("table").css({"background" : backgrounds[current = ++current % backgrounds.len
 setTimeout(nextBackground, 60000);
 //$("table").css("background", backgrounds[0]); postaviti inicijalnu, ali vec sam postavio direktno
 });
-</script>  
+</script>    -->
 </body>
 </html>
