@@ -7,7 +7,7 @@
 body {width:100%;
 	  height:100%;
 	
-	  /* background: url("1963154.jpg"); */
+	  background: url("833882.jpg"); 
 	  background-size: cover;
 	  background-position: center; /* Center the image */
 	  background-repeat: no-repeat; /* Do not repeat the image */
@@ -42,8 +42,10 @@ h1 {
 	padding-top:10%;
 	font-size: 4em;
 	color:#ffffff;
+	text-shadow :  5px 5px 5px rgba(174, 87, 142,1);
 }
 .tracking-in-contract {
+	transform: rotate(4deg);
 	animation: tracking-in-expand 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) 2s both;
 }
 @keyframes tracking-in-expand {
@@ -278,15 +280,15 @@ function explodePie (e) {
 </script>
 </head>
 <body>
-<video autoplay muted loop id="myVideo">
+<!--<video autoplay muted loop id="myVideo">
   <source src="wildfireee.mp4" type="video/mp4">
-</video>
+</video> -->
 <table border='0'>
-<tr> <td></td>  <td rowspan='1' colspan='3'><div class="pozdrav"><h1 class="tracking-in-contract"> Hvala vam na vašem vremenu!</h1> </div></td>     <td></td>  </tr>
-<tr> <td></td>   <td class="vibrate-1" rowspan='2' colspan='3'> <div id="chartContainer" style="width: 80%; height: 96%;margin:auto;"></div>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>   		</td>  <td></td>			 </tr>
-<tr> <td></td>    <td></td>  </tr>
-<tr> <td></td>    <td></td> <td></td>  <td></td> <td></td> <td></td>    </tr>
+<tr> <td></td>       <td></td>   <td class="vibrate-1" rowspan='2' colspan='3'> <div id="chartContainer" style="box-shadow:10px 10px 10px rgba(174, 87, 142,1);transform: rotate(4deg);width: 70%; height: 85%;margin:auto;"></div>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>   		</td>	  </tr>
+<tr> <td></td>    <td></td>   	 	 </tr>
+<tr> <td></td> <td></td>  <td rowspan='1' colspan='3'><div class="pozdrav"><h1 class="tracking-in-contract"> Hvala vam na vašem vremenu!</h1> </div></td>    </tr>
+<tr>  <td></td>    <td></td>  <td></td> <td></td> <td></td>  </tr>
 <tr> <td></td>    <td></td>  <td></td> <td></td> <td></td>  </tr>
 
 </table>
