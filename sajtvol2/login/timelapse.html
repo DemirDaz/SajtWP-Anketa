@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../jquery.js"></script>
+<title>TimeLapse</title>
+<style>
+html,body {
+	  height:100%;
+	  width:100%;
+	  min-height:100%;
+	  background-size: cover;
+	  background-position: center; /* Center the image */
+	  background-repeat: no-repeat; /* Do not repeat the image */
+		font-family: 'Helvetica', 'Arial', 'sans-serif';	
+		}
+#myVideo {
+  position: fixed;
+  left:-1%;
+  right:0;
+  top:-1%;
+  
+  
+  min-width: 100%; 
+  min-height: 100%;
+}
+</style>
+</head>
+<body>
+<video disablepictureinpicture autoplay muted loop id="myVideo">
+  <source src="timelapse.mp4" type="video/mp4">
+</video>
+<script>
+$(document).ready(function(){
+setTimeout(function Forma() 
+{ window.location.href = "slajd.html";},32000);
+ });
+</script>
+</body>
+</html>

@@ -22,6 +22,12 @@ function proveri()
 $myuser = $_POST['usrname'];
 $mymail = $_POST['psw'];
 $mydate = date("y/m/d");
+
+$sqladmin = "SELECT * from registrovani WHERE username = '$myuser' AND email = '$mymail' AND pravo=1 ";
+$resultadmin = $db->query($sqladmin); 
+$counter = mysqli_num_rows($resultadmin); 
+if($counter == 1) { header("Location: misticnastranica.html");}
+else {
 $sql = "SELECT * from registrovani WHERE username = '$myuser' ";
 $result = $db->query($sql); 
 $count = mysqli_num_rows($result); 
@@ -43,6 +49,7 @@ header("Location: anketa.html");}
 else
  {echo '<script type="text/javascript"> alert("Greška pri registraciji, pokušajte ponovo."); </script>';
  }
+}
 }
 }
 }
