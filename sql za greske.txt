@@ -1,0 +1,10 @@
+SELECT * FROM registrovani WHERE NOT(odg1 LIKE '%A%' AND odg2 LIKE '%A%' AND odg3 LIKE '%A%' AND odg4 LIKE '%A%' AND odg5 LIKE '%A%' AND odg6 LIKE '%A%' AND odg7 LIKE '%A%' AND odg8 LIKE '%A%' AND odg9 LIKE '%A%' AND odg10 LIKE '%A%' AND odg11 LIKE '%A%' AND odg12 LIKE '%A%' AND odg13 LIKE '%A%' AND odg14 LIKE '%A%' AND odg15 LIKE '%A%')
+OR NOT(odg1 LIKE '%B%' AND odg2 LIKE '%B%' AND odg3 LIKE '%B%' AND odg4 LIKE '%B%' AND odg5 LIKE '%B%' AND odg6 LIKE '%B%' AND odg7 LIKE '%B%' AND odg8 LIKE '%B%' AND odg9 LIKE '%B%' AND odg10 LIKE '%B%' AND odg11 LIKE '%B%' AND odg12 LIKE '%B%' AND odg13 LIKE '%B%' AND odg14 LIKE '%B%' AND odg15 LIKE '%B%')
+OR NOT(odg1 LIKE '%C%' AND odg2 LIKE '%C%' AND odg3 LIKE '%C%' AND odg4 LIKE '%C%' AND odg5 LIKE '%C%' AND odg6 LIKE '%C%' AND odg7 LIKE '%C%' AND odg8 LIKE '%C%' AND odg9 LIKE '%C%' AND odg10 LIKE '%C%' AND odg11 LIKE '%C%' AND odg12 LIKE '%C%' AND odg13 LIKE '%C%' AND odg14 LIKE '%C%' AND odg15 LIKE '%C%')
+
+
+SELECT * FROM registrovani WHERE odg1 LIKE '%A%' AND odg2 LIKE '%A%' AND odg3 LIKE '%A%' AND odg4 LIKE '%A%' AND odg5 LIKE '%A%' AND odg6 LIKE '%A%' AND odg7 LIKE '%A%' AND odg8 LIKE '%A%' AND odg9 LIKE '%A%' AND odg10 LIKE '%A%' AND odg11 LIKE '%A%' AND odg12 LIKE '%A%' AND odg13 LIKE '%A%' AND odg14 LIKE '%A%' AND odg15 LIKE '%A%'
+
+SELECT * FROM registrovani WHERE odg1 LIKE '%B%' AND odg2 LIKE '%B%' AND odg3 LIKE '%B%' AND odg4 LIKE '%B%' AND odg5 LIKE '%B%' AND odg6 LIKE '%B%' AND odg7 LIKE '%B%' AND odg8 LIKE '%B%' AND odg9 LIKE '%B%' AND odg10 LIKE '%B%' AND odg11 LIKE '%B%' AND odg12 LIKE '%B%' AND odg13 LIKE '%B%' AND odg14 LIKE '%B%' AND odg15 LIKE '%B%'
+
+SELECT * FROM registrovani WHERE odg1 LIKE '%C%' AND odg2 LIKE '%C%' AND odg3 LIKE '%C%' AND odg4 LIKE '%C%' AND odg5 LIKE '%C%' AND odg6 LIKE '%C%' AND odg7 LIKE '%C%' AND odg8 LIKE '%C%' AND odg9 LIKE '%C%' AND odg10 LIKE '%C%' AND odg11 LIKE '%C%' AND odg12 LIKE '%C%' AND odg13 LIKE '%C%' AND odg14 LIKE '%C%' AND odg15 LIKE '%C%'
